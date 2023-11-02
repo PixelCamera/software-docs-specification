@@ -2,9 +2,10 @@
 <!DOCTYPE instance-profile
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
-<instance-profile id="hi"
-                 name="Help Instance"
+<instance-profile id="software-docs-specification"
+                 name="计算机软件文档编制规范"
                  start-page="Default-topic.md">
 
     <toc-element topic="Default-topic.md"/>
+    <toc-element topic="second-page.md"/>
 </instance-profile>
