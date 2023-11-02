@@ -1,37 +1,36 @@
 name: Build documentation
 
 on:
-  # If specified, the workflow will be triggered automatically once you push to the `main` branch.
-  # Replace `main` with your branch’s name
+  # 如果指定了，一旦推送到`main`分支，工作流将自动触发。
   push:
     branches: [ "main" ]
-  # Specify to run a workflow manually from the Actions tab on GitHub
   workflow_dispatch:
 
-# Gives the workflow permissions to clone the repo and create a page deployment
+# 为工作流提供克隆仓库和创建页面部署的权限
 permissions:
   id-token: write
   pages: write
 
 env:
-  # Name of module and id separated by a slash
-  INSTANCE: Writerside/hi
-  # Replace HI with the ID of the instance in capital letters
-  ARTIFACT: webHelpHI2-all.zip
-  # Writerside docker image version
+  # 模块名称和ID，用斜杠分隔
+  INSTANCE: Writerside/software-docs-specification
+  # 用大写字母替换实例名称
+  ARTIFACT: webHelpSOFTWARE-DOCS-SPECIFICATION2-all.zip
+  # Writerside docker镜像版本
   DOCKER_VERSION: 232.10165.1
-  # Add the variable below to upload Algolia indexes
-  # Replace HI with the ID of the instance in capital letters
-  ALGOLIA_ARTIFACT: algolia-indexes-HI.zip
+  # 添加下面的变量来上传Algolia索引
+  ALGOLIA_ARTIFACT: algolia-indexes-SOFTWARE-DOCS-SPECIFICATION.zip
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # 检出仓库
       - name: Checkout repository
         uses: actions/checkout@v3
 
+        # 使用Docker构建Writerside文档
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v4
         with:
@@ -39,6 +38,7 @@ jobs:
           artifact: ${{ env.ARTIFACT }}
           docker-version: ${{ env.DOCKER_VERSION }}
 
+        # 上传文档
       - name: Upload documentation
         uses: actions/upload-artifact@v3
         with:
@@ -48,7 +48,7 @@ jobs:
             artifacts/report.json
           retention-days: 7
 
-      # Add the step below to upload Algolia indexes
+      # 添加以下步骤以上传Algolia索引
       - name: Upload algolia-indexes
         uses: actions/upload-artifact@v3
         with:
@@ -56,19 +56,21 @@ jobs:
           path: artifacts/${{ env.ALGOLIA_ARTIFACT }}
           retention-days: 7
 
-  # Add the job below and artifacts/report.json on Upload documentation step above if you want to fail the build when documentation contains errors
+  # 如果您希望在文档包含错误时构建失败，请添加以下作业和artifacts/report.json上传文档步骤
   test:
-    # Requires build job results
+    # 需要构建作业结果
     needs: build
     runs-on: ubuntu-latest
 
     steps:
+      # 下载工件
       - name: Download artifacts
         uses: actions/download-artifact@v1
         with:
           name: docs
           path: artifacts
 
+      # 测试文档
       - name: Test documentation
         uses: JetBrains/writerside-checker-action@v1
         with:
@@ -78,28 +80,29 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    # Requires the build job results
+    # 需要测试作业结果
     needs: test
     runs-on: ubuntu-latest
     steps:
+      # 下载工件
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: docs
-
+        # 解压工件
       - name: Unzip artifact
         uses: montudor/action-zip@v1
         with:
           args: unzip -qq ${{ env.ARTIFACT }} -d dir
-
+        # 设置页面
       - name: Setup Pages
         uses: actions/configure-pages@v2
-
+        # 上传工件
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: dir
-
+        # 部署到GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
