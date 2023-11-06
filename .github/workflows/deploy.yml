@@ -13,13 +13,13 @@ permissions:
 
 env:
   # 模块名称和ID，用斜杠分隔
-  INSTANCE: Writerside/software-docs-specification
+  INSTANCE: Writerside/sds
   # 用大写字母替换实例名称
-  ARTIFACT: webHelpSOFTWARE-DOCS-SPECIFICATION2-all.zip
+  ARTIFACT: webHelpSDS2-all.zip
   # Writerside docker镜像版本
   DOCKER_VERSION: 232.10165.1
   # 添加下面的变量来上传Algolia索引
-  ALGOLIA_ARTIFACT: algolia-indexes-SOFTWARE-DOCS-SPECIFICATION.zip
+  ALGOLIA_ARTIFACT: algolia-indexes-SDS.zip
 
 jobs:
   build:
