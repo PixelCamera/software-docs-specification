@@ -3,9 +3,61 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="software-docs-specification"
-                 name="计算机软件文档编制规范"
-                 start-page="Default-topic.md">
+                  name="计算机软件文档编制规范"
+                  start-page="1-index.md">
 
-    <toc-element topic="Default-topic.md"/>
-    <toc-element topic="second-page.md"/>
+    <toc-element topic="1-index.md">
+        <toc-element topic="2-scope.md"/>
+        <toc-element topic="3-normative-reference-documents.md"/>
+        <toc-element topic="4-terms-and-definitions.md"/>
+        <toc-element topic="5-abbreviations.md"/>
+        <toc-element topic="6-documentation-process.md">
+            <toc-element topic="6a-source-material-preparation.md"/>
+            <toc-element topic="6b-documentation-plan.md"/>
+            <toc-element topic="6c-documentation-development.md"/>
+            <toc-element topic="6d-review.md"/>
+            <toc-element topic="6e-documentation-subcontract.md"/>
+        </toc-element>
+        <toc-element topic="7-documentation-compilation-requirements.md"/>
+        <toc-element topic="8-documentation-formatting-standards.md">
+            <toc-element topic="8a-feasibility-analysis-report.md"/>
+            <toc-element topic="8b-software-development-plan.md"/>
+            <toc-element topic="8c-software-testing-plan.md"/>
+            <toc-element topic="8d-software-installation-plan.md"/>
+            <toc-element topic="8e-software-transfer-plan.md"/>
+            <toc-element topic="8f-operational-concept-description.md"/>
+            <toc-element topic="8g-system-subsystem-specification.md"/>
+            <toc-element topic="8h-interface-requirement-specification.md"/>
+            <toc-element topic="8i-system-subsystem-design-description.md"/>
+            <toc-element topic="8j-interface-design-description.md"/>
+            <toc-element topic="8k-software-requirement-specification.md"/>
+            <toc-element topic="8l-data-requirement-description.md"/>
+            <toc-element topic="8m-software-design-description.md"/>
+            <toc-element topic="8n-database-top-level-design-description.md"/>
+            <toc-element topic="8o-software-test-description.md"/>
+            <toc-element topic="8p-software-test-report.md"/>
+            <toc-element topic="8q-software-configuration-management-plan.md"/>
+            <toc-element topic="8r-software-quality-assurance-plan.md"/>
+            <toc-element topic="8s-development-progress-monthly-report.md"/>
+            <toc-element topic="8t-project-development-summary-report.md"/>
+            <toc-element topic="8u-software-product-specification.md"/>
+            <toc-element topic="8v-software-version-description.md"/>
+            <toc-element topic="8w-software-user-manual.md"/>
+            <toc-element topic="8x-computer-operation-manual.md"/>
+            <toc-element topic="8y-computer-programming-manual.md"/>
+        </toc-element>
+        <toc-element topic="9-appendix-a.md">
+            <toc-element topic="9a-overall-description-document.md"/>
+            <toc-element topic="9b-use-case-diagram-document.md"/>
+            <toc-element topic="9c-class-diagram-document.md"/>
+            <toc-element topic="9d-sequence-diagram-document.md"/>
+            <toc-element topic="9e-collaboration-diagram-document.md"/>
+            <toc-element topic="9f-state-diagram-document.md"/>
+            <toc-element topic="9g-activity-diagram-document.md"/>
+            <toc-element topic="9h-component-diagram-document.md"/>
+            <toc-element topic="9i-deployment-diagram-document.md"/>
+            <toc-element topic="9j-package-diagram-document.md"/>
+        </toc-element>
+        <toc-element topic="10-bibliography.md"/>
+    </toc-element>
 </instance-profile>
