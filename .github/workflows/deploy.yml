@@ -27,7 +27,7 @@ env:
   # Algolia 管理员 API 密钥
   ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
   # Help instance ID
-  CONFIG_JSON_PRODUCT: SDS
+  CONFIG_JSON_PRODUCT: sds
   # 帮助实例版本
   CONFIG_JSON_VERSION: Ver 23.11.07
 
