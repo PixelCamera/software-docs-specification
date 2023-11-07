@@ -76,6 +76,31 @@ jobs:
         with:
           instance: ${{ env.INSTANCE }}
 
+  publish-indexes:
+    # 需要构建作业结果
+    needs: build
+    runs-on: ubuntu-latest
+    container:
+      image: registry.jetbrains.team/p/writerside/builder/algolia-publisher:2.0.32-2
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: algolia-indexes
+      - uses: montudor/action-zip@v1
+        with:
+          args: unzip -qq ${{ env.ALGOLIA_ARTIFACT }} -d algolia-indexes
+      - run: |
+          env "algolia-key=${{env.secrets.ALGOLIA_KEY}}" java -jar /opt/builder/help-publication-agent.jar \
+          update-index \
+          --application-name ${{env.NE096NR7D4}} \
+          --index-name ${{env.dev_pixelcamera}} \
+          --product ${{env.SDS}} \
+          --version ${{env.Ver 23.11.07}} \
+          --index-directory algolia-indexes/ \
+          2>&1 | tee algolia-update-index-log.txt
+
   deploy:
     environment:
       name: github-pages

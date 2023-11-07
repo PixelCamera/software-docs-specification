@@ -6,6 +6,10 @@
     <build-profile instance="software-docs-specification">
         <variables>
             <noindex-content>false</noindex-content>
+            <algolia-id>NE096NR7D4</algolia-id>
+            <algolia-index>dev_pixelcamera</algolia-index>
+            <algolia-api-key>6cb1bac6876790d09968bab494dff627</algolia-api-key>
+            <web-root>https://pixelcamera.github.io/</web-root>
         </variables>
 
     </build-profile>
