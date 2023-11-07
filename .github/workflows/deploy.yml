@@ -20,6 +20,17 @@ env:
   DOCKER_VERSION: 232.10165.1
   # 添加下面的变量来上传Algolia索引
   ALGOLIA_ARTIFACT: algolia-indexes-SDS.zip
+  # Algolia 应用程序 ID
+  ALGOLIA_APP_NAME: NE096NR7D4
+  # Algolia 指数名称
+  ALGOLIA_INDEX_NAME: dev_pixelcamera
+  # Algolia 管理员 API 密钥
+  ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
+  # Help instance ID
+  CONFIG_JSON_PRODUCT: SDS
+  # 帮助实例版本
+  CONFIG_JSON_VERSION: Ver 23.11.07
+
 
 jobs:
   build:
@@ -92,12 +103,12 @@ jobs:
         with:
           args: unzip -qq ${{ env.ALGOLIA_ARTIFACT }} -d algolia-indexes
       - run: |
-          env "algolia-key=${{env.secrets.ALGOLIA_KEY}}" java -jar /opt/builder/help-publication-agent.jar \
+          env "algolia-key=${{env.ALGOLIA_KEY}}" java -jar /opt/builder/help-publication-agent.jar \
           update-index \
-          --application-name ${{env.NE096NR7D4}} \
-          --index-name ${{env.dev_pixelcamera}} \
-          --product ${{env.SDS}} \
-          --version ${{env.Ver 23.11.07}} \
+          --application-name ${{env.ALGOLIA_APP_NAME}} \
+          --index-name ${{env.ALGOLIA_INDEX_NAME}} \
+          --product ${{env.CONFIG_JSON_PRODUCT}} \
+          --version ${{env.CONFIG_JSON_VERSION}} \
           --index-directory algolia-indexes/ \
           2>&1 | tee algolia-update-index-log.txt
 
