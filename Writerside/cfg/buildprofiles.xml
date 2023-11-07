@@ -7,6 +7,10 @@
         <variables>
             <noindex-content>false</noindex-content>
         </variables>
-    </build-profile>
 
+    </build-profile>
+    <footer>
+        <social type="blog" href="https://github.com/PixelCamera/software-docs-specification"/>
+        <copyright>PixelCamera 2023</copyright>
+    </footer>
 </buildprofiles>
